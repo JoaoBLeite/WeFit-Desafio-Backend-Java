@@ -46,10 +46,9 @@ public class CreateAdminUserRunner implements ApplicationRunner {
    * for the existence of an admin user by email and creates one if it doesn't exist.
    *
    * @param args The application arguments.
-   * @throws Exception if an error occurs during the user creation process.
    */
   @Override
-  public void run(ApplicationArguments args) throws Exception {
+  public void run(ApplicationArguments args) {
     Optional<User> optionalUser = userRepository.findByEmail(adminUsername);
 
     if (optionalUser.isPresent()) {
@@ -58,15 +57,15 @@ public class CreateAdminUserRunner implements ApplicationRunner {
     }
 
     try {
-      User system = createAdminUserAccount();
-      userRepository.save(system);
+      User admin = createAdminUserAccount();
+      userRepository.save(admin);
 
-      log.debug("System account created successfully.");
+      log.debug("Admin account created successfully.");
       log.debug("username: {}", adminUsername);
       log.debug("password (NOT FOR PROD): {}", adminPassword);
     } catch (Exception ex) {
       log.error(
-          "Failed to create system account due to an unexpected error: {}", ex.getMessage(), ex);
+          "Failed to create admin account due to an unexpected error: {}", ex.getMessage(), ex);
     }
   }
 

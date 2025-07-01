@@ -4,7 +4,7 @@ CREATE TABLE legal_entity_profiles (
     cnpj VARCHAR(18) NOT NULL UNIQUE,
     responsible_cpf VARCHAR(14) NOT NULL,
     name VARCHAR(100) NOT NULL,
-    cellphone VARCHAR(100),
+    cell_phone VARCHAR(100),
     phone_number VARCHAR(100),
     email VARCHAR(255) UNIQUE,
     address_id VARCHAR(36) NOT NULL,

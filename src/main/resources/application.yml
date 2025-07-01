@@ -44,6 +44,6 @@ spring:
 springdoc:
   pathsToMatch:
     /auth/**,
-    /user/**
+    /legal-entity/**
   swagger-ui:
     use-root-path: true

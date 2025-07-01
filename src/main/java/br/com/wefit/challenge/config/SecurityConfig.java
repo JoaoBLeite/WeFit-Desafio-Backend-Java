@@ -89,7 +89,7 @@ public class SecurityConfig {
                         "/webjars/**")
                     .permitAll()
                     // Admin-only POST endpoints:
-                    .requestMatchers(HttpMethod.POST, "/user/v1")
+                    .requestMatchers(HttpMethod.POST, "/legal-entity/v1")
                     .hasAnyRole(ADMIN_ROLE, MANAGER_ROLE)
                     // Deny all
                     .requestMatchers("/users")

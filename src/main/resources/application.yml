@@ -5,6 +5,10 @@ server:
     context-path: /api
 # Security config
 security:
+  # First admin
+  constants:
+    username: ${ADM_USERNAME:john.doe@email.com}
+    password: ${ADM_PASSWORD:adm123}
   # Password encoder
   encoder:
     salt-length: ${SALT_LENGTH}

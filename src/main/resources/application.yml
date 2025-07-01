@@ -1,0 +1,45 @@
+# Server config
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+# Security config
+security:
+  # Password encoder
+  encoder:
+    salt-length: ${SALT_LENGTH}
+    iterations: ${ITERATIONS}
+  # JWT Token
+  jwt:
+    token:
+      secret-key: ${JWT_SECRET_KEY}
+      expire-length: ${JWT_EXPIRE_LENGTH}
+# Application
+spring:
+  application:
+    name: challenge
+  # Database config
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:wefit-challenge-db;DB_CLOSE_DELAY=-1
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+    open-in-view: false
+  # Migration config
+  flyway:
+    locations: classpath:db/migration/ddl, classpath:db/migration/dml
+    baseline-on-migrate: true
+  # Serialization Config
+  jackson:
+    default-property-inclusion: non_null
+# Documentation
+springdoc:
+  pathsToMatch:
+    /auth/**,
+    /user/**
+  swagger-ui:
+    use-root-path: true
